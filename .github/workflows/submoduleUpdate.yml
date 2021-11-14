@@ -21,5 +21,5 @@ jobs:
           git status
           git config --global user.email "captain_jainesh@yahoo.com"
           git config --global user.name "Jainesh Captain"
-          git commit -am "Update submodules"
+          git commit -m "Update submodules"
           git push
