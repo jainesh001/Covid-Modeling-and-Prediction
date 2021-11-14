@@ -18,10 +18,11 @@ jobs:
       - name: update submodules
         run: |
           git submodule update --init --recursive
+          git submodule update --recursive --remote
           
       - name: Commit & push changes
         run: |
           git config --global user.email "captain_jainesh@yahoo.com"
           git config --global user.name "Jainesh Captain"
-          git commit -m "Update submodules"
+          git commit -am "Update submodules"
           git push
