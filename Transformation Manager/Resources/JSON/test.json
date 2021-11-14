@@ -1,0 +1,21 @@
+{
+  "country": {
+    "name": "Afghanistan",
+    "country_code": "AFG",
+    "states_present": false,
+    "covid-data": {
+      "state":  {
+        "name": null,
+        "YYYY-MM-DD": {
+          "target1": {
+            "confirmed": "1",
+            "deaths": "2",
+            "recovered": "3",
+            "partially_vaccinated": "1",
+            "fully_vaccinated": "1"
+          }
+        }
+      }
+    }
+  }
+}
