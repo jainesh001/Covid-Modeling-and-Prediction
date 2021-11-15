@@ -1,0 +1,88 @@
+{
+    "Australia": [
+        "Australian Capital Territory",
+        "New South Wales",
+        "Northern Territory",
+        "Queensland",
+        "South Australia",
+        "Tasmania",
+        "Victoria",
+        "Western Australia"
+    ],
+    "China": [
+        "Anhui",
+        "Beijing",
+        "Chongqing",
+        "Fujian",
+        "Gansu",
+        "Guangdong",
+        "Guangxi",
+        "Guizhou",
+        "Hainan",
+        "Hebei",
+        "Heilongjiang",
+        "Henan",
+        "Hong Kong",
+        "Hubei",
+        "Hunan",
+        "Inner Mongolia",
+        "Jiangsu",
+        "Jiangxi",
+        "Jilin",
+        "Liaoning",
+        "Macau",
+        "Ningxia",
+        "Qinghai",
+        "Shaanxi",
+        "Shandong",
+        "Shanghai",
+        "Shanxi",
+        "Sichuan",
+        "Tianjin",
+        "Tibet",
+        "Xinjiang",
+        "Yunnan",
+        "Zhejiang"
+    ],
+    "Denmark": [
+        "Faroe Islands",
+        "Greenland"
+    ],
+    "France": [
+        "French Guiana",
+        "French Polynesia",
+        "Guadeloupe",
+        "Martinique",
+        "Mayotte",
+        "New Caledonia",
+        "Reunion",
+        "Saint Barthelemy",
+        "Saint Pierre and Miquelon",
+        "St Martin",
+        "Wallis and Futuna"
+    ],
+    "Netherlands": [
+        "Aruba",
+        "Bonaire, Sint Eustatius and Saba",
+        "Curacao",
+        "Sint Maarten",
+        "Wellington"
+    ],
+    "New Zealand": [
+        "Cook Islands",
+        "Soest"
+    ],
+    "United Kingdom": [
+        "Anguilla",
+        "Bermuda",
+        "British Virgin Islands",
+        "Cayman Islands",
+        "Channel Islands",
+        "Falkland Islands (Malvinas)",
+        "Gibraltar",
+        "Isle of Man",
+        "Montserrat",
+        "Saint Helena, Ascension and Tristan da Cunha",
+        "Turks and Caicos Islands"
+    ]
+}
