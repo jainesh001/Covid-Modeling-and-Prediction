@@ -20,48 +20,38 @@ def main():
     # print(confirmed_df.isna().sum())
     # print(confirmed_df['Province/State'])
 
-    confirmed_df = removeBadRows(confirmed_df)
+    confirmed_df = removeNonNumericRows(confirmed_df)
     print("---------------------------------")
-    deaths_df = removeBadRows(deaths_df)
+    deaths_df = removeNonNumericRows(deaths_df)
     print("---------------------------------")
-    recovered_df = removeBadRows(recovered_df)
+    recovered_df = removeNonNumericRows(recovered_df)
 
-    print(confirmed_df.loc[confirmed_df["Lat"] == 0])
-    print(deaths_df.loc[deaths_df["Lat"] == 0])
-    print(recovered_df.loc[recovered_df["Lat"] == 0])
-
-    print(confirmed_df)
-    print(deaths_df)
-    print(recovered_df)
-    # confirmed_df.loc[confirmed_df["Lat"] == 52.1326]['Province/State']='Wellington'
-    confirmed_df.loc[confirmed_df["Lat"] == 52.1326,'Province/State']='Wellington'
-    confirmed_df.loc[confirmed_df["Lat"] == -40.9006,'Province/State']='Soest'
+    # to fill the missing data
+    confirmed_df.loc[confirmed_df["Lat"] == 52.1326, 'Province/State'] = 'Wellington'
+    confirmed_df.loc[confirmed_df["Lat"] == -40.9006, 'Province/State'] = 'Soest'
     deaths_df.loc[deaths_df["Lat"] == 52.1326, 'Province/State'] = 'Wellington'
     deaths_df.loc[deaths_df["Lat"] == -40.9006, 'Province/State'] = 'Soest'
     recovered_df.loc[recovered_df["Lat"] == 52.1326, 'Province/State'] = 'Wellington'
     recovered_df.loc[recovered_df["Lat"] == -40.9006, 'Province/State'] = 'Soest'
 
-    # raw_csv.loc[raw_csv["Lat"] != 0]
-    # confirmed_df['Province/State'][197]='Soest'
-    # deaths_df['Province/State'][199] = 'Wellington'
-    # deaths_df['Province/State'][197] = 'Soest'
-    # recovered_df['Province/State'][199] = 'Wellington'
-    # recovered_df['Province/State'][197] = 'Soest'
-
-    confirmed_df.to_csv('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/time_series_covid19_confirmed_global_cleaned.csv')
-    deaths_df.to_csv('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/time_series_covid19_deaths_global_cleaned.csv')
-    recovered_df.to_csv('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/time_series_covid19_recovered_global_cleaned.csv')
+    # To write cleaned and added value to respective csv files
+    confirmed_df.to_csv(
+        'C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/time_series_covid19_confirmed_global_cleaned.csv')
+    deaths_df.to_csv(
+        'C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/time_series_covid19_deaths_global_cleaned.csv')
+    recovered_df.to_csv(
+        'C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/time_series_covid19_recovered_global_cleaned.csv')
 
 
 # To remove bad data that is related to no state at all so there is missing latitude value
-def removeBadRows(raw_csv):
+def removeNonNumericRows(raw_csv):
     # To filter that out when Lat is 0 drop that raw via loc
     raw_csv = raw_csv.loc[raw_csv["Lat"] != 0]
     # To filter that out when Lat is NaN drop that raw via loc
     raw_csv = raw_csv.loc[raw_csv["Lat"].notnull()]
 
     return raw_csv
-    #     listOfRowsToDrop=["Diamond Princess","Grand Princess","Repatriated Travellers","Unknown"]
+    # listOfRowsToDrop=["Diamond Princess","Grand Princess","Repatriated Travellers","Unknown"]
     # raw_csv.drop(listOfRowsToDrop,inplace=True)
 
 

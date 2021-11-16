@@ -1,47 +1,37 @@
-
-import pandas as pd
-import numpy as num
-import json
-import copy
+import unittest
+from Preprocessing import *
 
 
-class Country(dict):
-    def __init__(self, name, states_present, stateData, address):
-        dict.__init__(self, name=name, states_present=states_present, stateData=stateData, address=address)
+class UnitTest(unittest.TestCase):
 
-def main():
-    confirmed_df = pd.read_csv('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/time_series_covid19_confirmed_global_cleaned.csv')
-    deaths_df = pd.read_csv('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/time_series_covid19_deaths_global_cleaned.csv')
-    recovered_df = pd.read_csv('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/time_series_covid19_recovered_global_cleaned.csv')
-    print(confirmed_df)
-    print(deaths_df)
-    print(recovered_df)
-    print (confirmed_df['Country/Region'].size)
-    print( type(confirmed_df.columns[5:]))
-    # for i in range(662):
-    #     print(confirmed_df.columns[5:][i],"---", confirmed_df[confirmed_df.columns[5:][i]][0])
+    def test(self):
+        self.assertTrue(True)
 
-    print(type(confirmed_df['Long'][0]))
-    # f=open('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/JSON/test.json')
-    # data=json.load(f)
-    # print(data['country'])
-    # temp=copy.deepcopy(data['country'][0])
-    # for i in range(confirmed_df['Country/Region'].size):
-    #     temp['name']=confirmed_df['Country/Region'][i]
-    #     # Need to handle this later
-    #     temp['states_present']=False
-    #     listA=[]
-    #     for j in range(1):
-    #         stateToAdd= {}
-    #         stateToAdd['name']="Not present"
-    #         # for k in range()
-    #         # stateToAdd['data']=[]
+    # So this test method is effectively cleaning for any 0 or missing values NaN
+    def test_Remove_bad_rows(self):
+        dirty_one = pd.read_csv('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/BadOne.csv')
+        clean_one = pd.read_csv('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/CleanOneFile.csv')
+        #removeNonNumericRows will be used on sample csv
+        dirtyCleaned = removeNonNumericRows(dirty_one)
+        #Coverting series for column Lat to list
+        listA = list(dirtyCleaned['Lat'])
+        listB = list(clean_one['Lat'])
+        #assertEquals check both arguments are equals
+        self.assertEquals(listA, listB)
 
-
-
-
-    # with open('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/JSON/Master.json', 'w',encoding='utf-8') as fp:
-    #     json.dump(data, fp,ensure_ascii=False, indent=4)
+    # So this test method is to demonstrate that method will not be cleaning string among numbers
+    def test_Remove_bad_rows_StringTypeAmongNumbers(self):
+        dirty_one = pd.read_csv('C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/BadOneNew.csv')
+        clean_one = pd.read_csv(
+            'C:/Users/radha/PycharmProjects/covid-analysis/Transformation Manager/Resources/CSV/CleanOneFile.csv')
+        #removeNonNumericRows will be used on sample csv
+        dirtyCleaned = removeNonNumericRows(dirty_one)
+        #Coverting series for column Lat to list
+        listA = list(dirtyCleaned['Lat'])
+        listB = list(clean_one['Lat'])
+        # It is expected that it will not match as the removeBadDataMethod is not written in such a way
+        #assertNotEquals check both arguments are not equals
+        self.assertNotEquals(listA, listB)
 
 
 if __name__ == "__main__":
